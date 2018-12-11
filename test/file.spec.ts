@@ -36,7 +36,7 @@ describe('File', () => {
           const output = { foo: 'bar' };
 
           if (data.valid) {
-            expect(f.format(output)).toBe(data.data);
+            expect(f.formatData(output)).toBe(data.data);
           } else {
             expect(() => f.format(output)).toThrow();
           }
