@@ -1,4 +1,6 @@
-import * as fs from 'fs';
+import fs from 'fs';
+import tomlify from 'tomlify-j0.4';
+import yamljs from 'yamljs';
 
 export default class StackOutputFile {
   constructor(public path: string) {}
@@ -10,10 +12,10 @@ export default class StackOutputFile {
       case 'JSON':
         return JSON.stringify(data, null, 2);
       case 'TOML':
-        return require('tomlify-j0.4')(data, null, 0);
+        return tomlify.toToml(data, null, 0);
       case 'YAML':
       case 'YML':
-        return require('yamljs').stringify(data);
+        return yamljs.stringify(data);
       default:
         throw new Error('No formatter found for `' + ext + '` extension');
     }

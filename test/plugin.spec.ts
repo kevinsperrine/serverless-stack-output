@@ -1,25 +1,25 @@
-import sinon from 'sinon'
+import sinon from 'sinon';
 
-import Plugin from '../src/plugin'
+import Plugin from '../src/plugin';
 
 describe('Plugin', () => {
-  let providerMock = null
-  let getProvider = null
+  let providerMock = null;
+  let getProvider = null;
   const provider = {
     request: () => true,
     sdk: {
       VERSION: '2.21.0'
     }
-  }
+  };
 
   beforeEach(() => {
-    providerMock = sinon.mock(provider)
-    getProvider = sinon.stub().returns(provider)
-  })
+    providerMock = sinon.mock(provider);
+    getProvider = sinon.stub().returns(provider);
+  });
 
   afterEach(() => {
-    providerMock.restore()
-  })
+    providerMock.restore();
+  });
 
   describe('Configuration', () => {
     it('hasHandler', () => {
@@ -40,16 +40,16 @@ describe('Plugin', () => {
             name: 'aws'
           }
         }
-      }
+      };
 
-      const test = new Plugin(config, { serverless: true }, { options: true })
+      const test = new Plugin(config, { serverless: true }, { options: true });
 
-      expect(test.hasHandler()).toBe(true)
-      expect(test.hasFile()).toBe(false)
+      expect(test.hasHandler()).toBe(true);
+      expect(test.hasFile()).toBe(false);
 
-      expect(test.handler).toContain('foo/bar.baz')
-    })
-  })
+      expect(test.handler).toContain('foo/bar.baz');
+    });
+  });
 
   describe('Configuration', () => {
     it('hasFile', () => {
@@ -70,14 +70,14 @@ describe('Plugin', () => {
             name: 'aws'
           }
         }
-      }
+      };
 
-      const test = new Plugin(config)
+      const test = new Plugin(config);
 
-      expect(test.hasHandler()).toBe(false)
-      expect(test.hasFile()).toBe(true)
+      expect(test.hasHandler()).toBe(false);
+      expect(test.hasFile()).toBe(true);
 
-      expect(test.file).toContain('foo/bar.toml')
-    })
-  })
-})
+      expect(test.file).toContain('foo/bar.toml');
+    });
+  });
+});

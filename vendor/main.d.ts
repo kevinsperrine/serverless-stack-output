@@ -1,17 +1,19 @@
+declare module 'tomlify-j0.4';
+
 declare interface StackOutputPair {
-  OutputKey: string
-  OutputValue: string
+  OutputKey: string;
+  OutputValue: string;
 }
 
 declare interface StackDescription {
-  Outputs: StackOutputPair[]
+  Outputs: StackOutputPair[];
 }
 
 declare interface StackDescriptionList {
-  Stacks: StackDescription[]
+  Stacks: StackDescription[];
 }
 
 declare interface OutputConfig {
-  handler: string
-  file: string
+  handler: string;
+  file: string;
 }

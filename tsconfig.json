@@ -15,18 +15,10 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
-    "lib": [
-      "es2015",
-      "es2016"
-    ],
+    "esModuleInterop": true,
+    "lib": ["es2015", "es2016"],
     "declaration": false
   },
-  "include": [
-    "src/**/*",
-    "vendor/**/*"
-  ],
-  "exclude": [
-    "node_modules/**/*",
-    "src/**/*.spec.ts"
-  ]
+  "include": ["src/**/*", "vendor/**/*"],
+  "exclude": ["node_modules/**/*", "src/**/*.spec.ts"]
 }
