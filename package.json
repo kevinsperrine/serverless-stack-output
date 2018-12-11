@@ -1,6 +1,6 @@
 {
   "name": "@kevinsperrine/serverless-stack-output",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Serverless plugin to process AWS CloudFormation Stack Output",
   "license": "MIT",
   "author": "Kevin S. Perrine <kperrine@gmail.com>",
