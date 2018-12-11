@@ -16,4 +16,5 @@ declare interface StackDescriptionList {
 declare interface OutputConfig {
   handler: string;
   file: string;
+  format: string;
 }
