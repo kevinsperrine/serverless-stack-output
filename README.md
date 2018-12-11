@@ -1,6 +1,6 @@
 # Serverless Stack Output Plugin
 
-[![npm](https://img.shields.io/npm/v/serverless-stack-output.svg)](https://www.npmjs.com/package/@kevinsperrine/serverless-stack-output)
+[![npm](https://img.shields.io/npm/v/@kevinsperrine/serverless-stack-output.svg)](https://www.npmjs.com/package/@kevinsperrine/serverless-stack-output)
 [![license](https://img.shields.io/github/license/kevinsperrine/serverless-stack-output.svg)](https://github.com/kevinsperrine/serverless-stack-output/blob/master/LICENSE.md)
 [![CircleCI](https://img.shields.io/circleci/project/github/kevinsperrine/serverless-stack-output.svg)](https://circleci.com/gh/kevinsperrine/serverless-stack-output)
 [![Coveralls](https://img.shields.io/coveralls/kevinsperrine/serverless-stack-output.svg)](https://coveralls.io/github/kevinsperrine/serverless-stack-output)
@@ -23,7 +23,7 @@ $ > npm install @kevinsperrine/serverless-stack-output
 
 ```yaml
 plugins:
-  - "@kevinsperrine/serverless-stack-output"
+  - '@kevinsperrine/serverless-stack-output'
 
 custom:
   output:
@@ -36,11 +36,11 @@ custom:
 Based on the configuration above the plugin will search for a file `scripts/output.js` with the following content:
 
 ```js
-function handler (data, serverless, options) {
-  console.log('Received Stack Output', data)
+function handler(data, serverless, options) {
+  console.log('Received Stack Output', data);
 }
 
-module.exports = { handler }
+module.exports = { handler };
 ```
 
 ### File Formats
@@ -67,7 +67,7 @@ The plugins works fine with serverless functions, as well as when using custom C
 service: sls-stack-output-example
 
 plugins:
-  - "@kevinsperrine/serverless-stack-output"
+  - '@kevinsperrine/serverless-stack-output'
 
 package:
   exclude:
@@ -98,7 +98,7 @@ resources:
       Properties:
         QueueName: example-queue
     ExampleUser:
-      Type: "AWS::IAM::User"
+      Type: 'AWS::IAM::User'
       Properties:
         UserName: example-user
         Policies:
@@ -106,11 +106,21 @@ resources:
             PolicyDocument:
               Version: '2012-10-17'
               Statement:
-                - Effect: "Allow"
+                - Effect: 'Allow'
                   Action:
                     - sqs:SendMessage
                   Resource:
-                    - {"Fn::Join": [":", ["arn:aws:sqs:*", {"Ref": "AWS::AccountId"}, "example-queue"]]}
+                    - {
+                        'Fn::Join':
+                          [
+                            ':',
+                            [
+                              'arn:aws:sqs:*',
+                              { 'Ref': 'AWS::AccountId' },
+                              'example-queue',
+                            ],
+                          ],
+                      }
     ExampleUserKey:
       Type: AWS::IAM::AccessKey
       Properties:
@@ -121,7 +131,7 @@ resources:
       Value:
         Ref: ExampleUserKey
     ExampleUserSecret:
-      Value: {"Fn::GetAtt": ["ExampleUserKey", "SecretAccessKey"]}
+      Value: { 'Fn::GetAtt': ['ExampleUserKey', 'SecretAccessKey'] }
     ExampleStaticValue:
       Value: example-static-value
 ```
