@@ -13,7 +13,9 @@ declare namespace Serverless {
       getRegion: () => string;
       getServerlessDeploymentBucketName: () => string;
       getStage: () => string;
-      naming: any;
+      naming: {
+        getStackName: () => string;
+      };
 
       request: (
         service: string,
